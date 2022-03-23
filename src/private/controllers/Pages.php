@@ -62,7 +62,7 @@ class Pages extends Controller
         $postdata = $_POST ?? array();
         if (isset($postdata['firstname']) && isset($postdata['lastname']) && isset($postdata['email']) && isset($postdata['password'])) {
             $users = $this->model('Users');
-            
+
 
             if (empty($postdata['firstname']) || empty($postdata['lastname']) || empty($postdata['email']) || empty($postdata['password'])) {
                 $_SESSION['message'] = "Fill all the details........";
@@ -115,6 +115,62 @@ class Pages extends Controller
     }
     public function user()
     {
-        $this->view('pages/user/blog');
+        $data = $this->model('Posts')::all();
+        $this->view('pages/user/blog', $data);
+    }
+    public function addblog()
+    {
+        $postdata = $_POST ?? array();
+        if (isset($postdata['title']) && isset($postdata['content'])) {
+            echo 'dsdfjkhdfhkhs';
+            $posts = $this->model('Posts');
+            $posts->title = $postdata['title'];
+            $posts->content = $postdata['content'];
+            $posts->save();
+        }
+        $data = $this->model('Posts')::all();
+        $this->view('pages/addblog', $data);
+    }
+    public function editblog()
+    {
+        //$data = "";
+        if (isset($_POST['edit'])) {
+            // echo $_POST['id'];
+            // die();
+            $data = $this->model('Posts')::find_by_blog_id($_POST['id']);
+        }
+        $this->view('pages/editblog', $data);
+    }
+    public function update()
+    {
+        global $settings;
+        $postdata = $_POST ?? array();
+        if (isset($postdata['title']) && $postdata['content']) {
+            $posts = $this->model('Posts')::find_by_blog_id($_POST['id']);
+
+            $posts->title = $postdata['title'];
+            $posts->content = $postdata['content'];
+            $posts->save();
+            header('location:' . $settings['siteurl'] . '/pages/user');
+        }
+        $data = $this->model('Posts')::all();
+        $this->view('pages/editblog', $data);
+    }
+    public function deleteblog()
+    {
+        global $settings;
+        if (isset($_POST['delete'])) {
+            if ($this->model('Posts')::find_by_blog_id($_POST['id'])) {
+                //echo "hiowhd";
+                $row = $this->model('Posts')::find_by_blog_id($_POST['id']);
+                $row->delete();
+                header('location:' . $settings['siteurl'] . '/pages/adminblog');
+            }
+        }
+    }
+    public function adminblog()
+    {
+        $row = $this->model('Posts')::all();
+        $this->view('pages/adminblog', $row);
     }
 }

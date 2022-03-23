@@ -82,7 +82,7 @@ global $settings;
        <div class="card-body">
          <h5 class="card-title">' . $v->title . '</h5>
          <p class="card-text">' . $v->content . '</p>
-         <form action="editblog" method="post"><button type="submit" name="edit" style="padding:10px">Edit</button><input type="text" hidden name="id" value="'.$v->blog_id. '"> </form>
+         <form action="deleteblog" method="post"><button type="submit" name="delete" style="padding:10px">delete</button><input type="text" hidden name="id" value="'.$v->blog_id. '"> </form>
        </div>
      </div>
    </div>';

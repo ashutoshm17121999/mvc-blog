@@ -21,7 +21,8 @@
     <div class="form-floating">
      <?php echo isset($_SESSION['message'])?$_SESSION['message']:""; ?>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" name="submit" type="submit">Log in</button>
+    <button class="w-100 btn btn-lg btn-success" name="submit" type="submit">Log in</button>
+    <p class="mt-2 ">New user?<a href="signup">Sign Up</a></p>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
 </main>

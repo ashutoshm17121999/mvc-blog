@@ -52,7 +52,7 @@ global $settings;
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="#">Sign out</a>
+                <a class="nav-link px-3" href="login">Sign out</a>
             </div>
         </div>
     </header>
@@ -69,12 +69,12 @@ global $settings;
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="adminblog">
                                 <span data-feather="file"></span>
-                                Orders
+                                Blog
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="shopping-cart"></span>
                                 Products
@@ -85,7 +85,7 @@ global $settings;
                                 <span data-feather="users"></span>
                                 Customers
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
